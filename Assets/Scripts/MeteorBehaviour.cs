@@ -4,33 +4,41 @@ using UnityEngine;
 
 public class MeteorBehaviour : MonoBehaviour
 {
-    public BoxCollider2D _collider;
-    public float impactRadius = 1.5f;
-    [HideInInspector] public Vector3 destinationPoint;
-    public GameObject topLeftPosition;
-    public GameObject bottomRightPosition;
-    float xMax;
-    float xMin;
-    float yMax;
-    float yMin;
-
-
+    public Collider2D _collider;
+    public Rigidbody2D rb;
+    [HideInInspector] public Vector2 destinationPosition;
+    [HideInInspector] public ImpactIndicator impactIndicator;
+    float distance;
+    Vector2 movementDirection;
+    
     void Start() {
-        _collider.gameObject.SetActive(false);
+        _collider.enabled = false;
+        distance = Vector3.Distance(gameObject.transform.position, destinationPosition);
 
-        xMax = bottomRightPosition.transform.position.x;
-        xMin = topLeftPosition.transform.position.x;
-        yMax = topLeftPosition.transform.position.y;
-        yMin = bottomRightPosition.transform.position.y;
+        movementDirection = new Vector2(
+            destinationPosition.x - transform.position.x,
+            destinationPosition.y - transform.position.y
+        );
     }
     
     void Update()
     {
+        rb.velocity = movementDirection;
+
+        float remainingDistance = Vector3.Distance(transform.position, destinationPosition);
+        impactIndicator.remainingDistance = remainingDistance;
+
         if (
-            Vector3.Distance(transform.position, destinationPoint) < 0.5 && 
-            !_collider.gameObject.activeInHierarchy
+            remainingDistance < 0.5f && 
+            !_collider.enabled
         ) {
-            _collider.gameObject.SetActive(true);
+            _collider.enabled = true;
+        }
+
+        if (transform.position.y < destinationPosition.y) {
+            Debug.Log("meteorit doletel :^)");
+            impactIndicator.onDestroy();
+            Destroy(gameObject);
         }
     }
 }
