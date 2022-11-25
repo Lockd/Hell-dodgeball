@@ -8,9 +8,7 @@ using UnityEngine.SceneManagement;
 public class ManagerGame : MonoBehaviour
 {
     static int numberAlive;
-
     public GameObject overScreen;
-
     public Button restartButton;
     public Button menuButton;
 
@@ -21,12 +19,18 @@ public class ManagerGame : MonoBehaviour
 
     private void Update()
     {
-        if (numberAlive <= 0) GameOver();
+        if (
+            numberAlive <= 0 && 
+            !overScreen.activeInHierarchy
+        ) {
+            GameOver();
+        }
     }
 
     void GameOver()
     {
         overScreen.SetActive(true);
+        ScoreCounter.saveScore();
     }
 
     void ReturnToMenu()
@@ -36,7 +40,6 @@ public class ManagerGame : MonoBehaviour
 
     void Restart()
     {
-       
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 

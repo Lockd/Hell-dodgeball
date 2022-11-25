@@ -13,9 +13,6 @@ public class CollisionDetector : MonoBehaviour
     public Rigidbody2D rb;
     void OnTriggerEnter2D(Collider2D col) {
         if (col.tag == "Meteor") {
-            // TODO decrease interface counter
-            // TODO set up menu if that was the last member of the group 
-
             Death();
         }
     }

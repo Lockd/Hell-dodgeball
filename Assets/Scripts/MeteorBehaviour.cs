@@ -10,7 +10,7 @@ public class MeteorBehaviour : MonoBehaviour
     [HideInInspector] public ImpactIndicator impactIndicator;
     float distance;
     Vector2 movementDirection;
-    
+        
     void Start() {
         _collider.enabled = false;
         distance = Vector3.Distance(gameObject.transform.position, destinationPosition);
@@ -36,7 +36,7 @@ public class MeteorBehaviour : MonoBehaviour
         }
 
         if (transform.position.y < destinationPosition.y) {
-            //Debug.Log("meteorit doletel :^)");
+            ScoreCounter.increaseScore();
             impactIndicator.onDestroy();
             Destroy(gameObject);
         }
