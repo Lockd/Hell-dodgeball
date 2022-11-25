@@ -28,6 +28,6 @@ public class ImpactIndicator : MonoBehaviour
     }
 
     public void onDestroy() {
-        Destroy(gameObject);
+        //Destroy(gameObject);
     }
 }

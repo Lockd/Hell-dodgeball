@@ -10,6 +10,8 @@ public class MeteorBehaviour : MonoBehaviour
     [HideInInspector] public ImpactIndicator impactIndicator;
     float distance;
     Vector2 movementDirection;
+
+    public float time;
         
     void Start() {
         _collider.enabled = false;
@@ -28,16 +30,20 @@ public class MeteorBehaviour : MonoBehaviour
         float remainingDistance = Vector3.Distance(transform.position, destinationPosition);
         impactIndicator.remainingDistance = remainingDistance;
 
+        /* Not Needed
         if (
             remainingDistance < 0.5f && 
             !_collider.enabled
         ) {
             _collider.enabled = true;
         }
+        */
 
-        if (transform.position.y < destinationPosition.y) {
+        if (transform.position.y <= destinationPosition.y + 0.5f) {
             ScoreCounter.increaseScore();
-            impactIndicator.onDestroy();
+            impactIndicator.GetComponent<Collider2D>().enabled = true;
+            Destroy(impactIndicator.gameObject, time);
+            //impactIndicator.onDestroy();
             Destroy(gameObject);
         }
     }

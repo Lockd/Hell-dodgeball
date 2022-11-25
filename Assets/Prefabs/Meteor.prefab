@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2768785387279629603}
   m_Layer: 0
   m_Name: Meteor
-  m_TagString: Meteor
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -103,6 +103,7 @@ MonoBehaviour:
   rb: {fileID: 184812824830996704}
   destinationPosition: {x: 0, y: 0}
   impactIndicator: {fileID: 0}
+  time: 0.025
 --- !u!50 &184812824830996704
 Rigidbody2D:
   serializedVersion: 4
@@ -131,7 +132,7 @@ CapsuleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5419101644902331144}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1

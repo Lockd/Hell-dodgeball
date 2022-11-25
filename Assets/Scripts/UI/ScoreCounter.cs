@@ -8,6 +8,7 @@ public class ScoreCounter : MonoBehaviour
     static Text scoreText;
     static int currentScore = 0;
     [HideInInspector] public int amountOfAliveDinos;
+    static int savedHighScore;
     void Start()
     {
         scoreText = GetComponent<Text>();
@@ -21,7 +22,8 @@ public class ScoreCounter : MonoBehaviour
     }
 
     public static void saveScore() {
-        int savedHighScore = PlayerPrefs.GetInt("HighScore");
+        //int
+        savedHighScore = PlayerPrefs.GetInt("HighScore");
         Debug.Log("saved high score: " + savedHighScore);
         if (currentScore > savedHighScore) {
             PlayerPrefs.SetInt("HighScore", currentScore);
@@ -31,5 +33,21 @@ public class ScoreCounter : MonoBehaviour
     public static void resetScore() {
         currentScore = 0;
         scoreText.text = "0";
+    }
+
+    public static int CurrentScore
+    {
+        get
+        {
+            return currentScore;
+        }
+    }
+
+    public static int HightScore
+    {
+        get
+        {
+            return savedHighScore;
+        }
     }
 }

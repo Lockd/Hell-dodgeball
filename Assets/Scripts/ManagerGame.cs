@@ -12,6 +12,8 @@ public class ManagerGame : MonoBehaviour
     public Button restartButton;
     public Button menuButton;
 
+    public GameObject score;
+
     private void Start()
     {
         restartButton.onClick.AddListener(Restart);
@@ -29,6 +31,7 @@ public class ManagerGame : MonoBehaviour
 
     void GameOver()
     {
+        score.SetActive(false);
         overScreen.SetActive(true);
         ScoreCounter.saveScore();
     }

@@ -20,8 +20,8 @@ public class MeteorSpawner : MonoBehaviour
 
     void Start()
     {
-        xMax = bottomRightPosition.transform.position.x - impactRadius;
-        xMin = topLeftPosition.transform.position.x + impactRadius;
+        xMax = bottomRightPosition.transform.position.x - impactRadius*1.7f;
+        xMin = topLeftPosition.transform.position.x + impactRadius*1.7f;
         yMax = topLeftPosition.transform.position.y - impactRadius;
         yMin = bottomRightPosition.transform.position.y + impactRadius;
     }
