@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CharacterMovement : MonoBehaviour
 {
-    public float speed = 10f;
+    public float speed;
     public float maxSpeed = 20f;
     public Rigidbody2D rb;
     public Animator anim;

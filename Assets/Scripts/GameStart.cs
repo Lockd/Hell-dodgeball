@@ -21,6 +21,8 @@ public class GameStart : MonoBehaviour
         for (int i = 0; i<5; i++)
         {
             GameObject dino = Instantiate(dinosaurs[Random.Range(0, 3)], getDestinationPosition(), transform.rotation);
+            dino.GetComponent<CharacterMovement>().speed = Random.Range(4, 8);
+            ManagerGame.Alive++;
         }
     }
 

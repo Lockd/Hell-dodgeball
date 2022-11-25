@@ -27,6 +27,7 @@ public class CollisionDetector : MonoBehaviour
             character.CanMove = false;
             anim.Play(deathAnimName);
             Destroy(gameObject, deathTimer);
+            ManagerGame.Alive--;
         }
     }
 }
