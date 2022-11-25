@@ -28,8 +28,6 @@ public class MeteorBehaviour : MonoBehaviour
         float remainingDistance = Vector3.Distance(transform.position, destinationPosition);
         impactIndicator.remainingDistance = remainingDistance;
 
-        Debug.Log("Meteor distance " + remainingDistance);
-
         if (
             remainingDistance < 0.5f && 
             !_collider.enabled
