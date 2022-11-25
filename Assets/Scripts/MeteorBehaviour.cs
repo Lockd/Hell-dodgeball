@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MeteorBehaviour : MonoBehaviour
 {
-    public BoxCollider2D _collider;
+    public Collider2D _collider;
     public Rigidbody2D rb;
     [HideInInspector] public Vector2 destinationPosition;
     [HideInInspector] public ImpactIndicator impactIndicator;
@@ -28,9 +28,11 @@ public class MeteorBehaviour : MonoBehaviour
         float remainingDistance = Vector3.Distance(transform.position, destinationPosition);
         impactIndicator.remainingDistance = remainingDistance;
 
+        Debug.Log("Meteor distance " + remainingDistance);
+
         if (
             remainingDistance < 0.5f && 
-            !_collider.gameObject.activeInHierarchy
+            !_collider.enabled
         ) {
             _collider.enabled = true;
         }
