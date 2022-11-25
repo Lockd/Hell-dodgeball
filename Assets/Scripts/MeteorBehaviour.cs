@@ -36,7 +36,7 @@ public class MeteorBehaviour : MonoBehaviour
         }
 
         if (transform.position.y < destinationPosition.y) {
-            Debug.Log("meteorit doletel :^)");
+            //Debug.Log("meteorit doletel :^)");
             impactIndicator.onDestroy();
             Destroy(gameObject);
         }
