@@ -27,7 +27,8 @@ public class ImpactIndicator : MonoBehaviour
         transform.localScale = new Vector3(scaleX, scaleY, 1f);
     }
 
+
     public void onDestroy() {
-        //Destroy(gameObject);
+        //ScoreCounter.increaseScore();
     }
 }

@@ -16,9 +16,14 @@ public class ScoreCounter : MonoBehaviour
         Debug.Log("Highest score yet: " + PlayerPrefs.GetInt("HighScore"));
     }
 
+    private void Update()
+    {
+        scoreText.text = currentScore.ToString();
+
+    }
+
     public static void increaseScore() {
         currentScore += ManagerGame.Alive;
-        scoreText.text = currentScore.ToString();
     }
 
     public static void saveScore() {
@@ -40,6 +45,10 @@ public class ScoreCounter : MonoBehaviour
         get
         {
             return currentScore;
+        }
+        set
+        {
+            currentScore = value;
         }
     }
 

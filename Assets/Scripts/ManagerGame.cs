@@ -14,9 +14,12 @@ public class ManagerGame : MonoBehaviour
 
     public GameObject score;
 
+    public AudioSource gameOverSound;
+
     private void Start()
     {
         restartButton.onClick.AddListener(Restart);
+        menuButton.onClick.AddListener(ReturnToMenu);
     }
 
     private void Update()
@@ -31,6 +34,7 @@ public class ManagerGame : MonoBehaviour
 
     void GameOver()
     {
+        gameOverSound.Play();
         score.SetActive(false);
         overScreen.SetActive(true);
         ScoreCounter.saveScore();

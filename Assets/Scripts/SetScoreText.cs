@@ -14,11 +14,23 @@ public class SetScoreText : MonoBehaviour
 
     private void Start()
     {
-        scores = new List<int>()
+        if (ScoreCounter.CurrentScore > ScoreCounter.HightScore)
         {
-        ScoreCounter.CurrentScore,
-        ScoreCounter.HightScore
-        };
+            scores = new List<int>()
+            {
+            ScoreCounter.CurrentScore,
+            ScoreCounter.CurrentScore
+
+            };
+        }
+        else
+        {
+            scores = new List<int>()
+            {
+            ScoreCounter.CurrentScore,
+            ScoreCounter.HightScore
+            };
+        }
     }
     void Update()
     {
