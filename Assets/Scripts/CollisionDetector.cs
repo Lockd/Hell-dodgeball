@@ -13,8 +13,11 @@ public class CollisionDetector : MonoBehaviour
 
     public CharacterMovement character;
     public Rigidbody2D rb;
+
+    bool shouldDie;
     void OnTriggerEnter2D(Collider2D col) {
-        if (col.tag == "Meteor") {
+        if (col.tag == "Meteor" && !shouldDie) {
+            shouldDie = true;
             Death();
         }
     }
