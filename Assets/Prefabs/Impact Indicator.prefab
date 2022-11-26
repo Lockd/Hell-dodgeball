@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scaleSpeed: 0.5
-  maxScale: 2
+  maxScale: 3
   initialMeteorPosition: {x: 0, y: 0, z: 0}
   remainingDistance: 0
 --- !u!61 &6902655776944850834

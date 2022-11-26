@@ -10,8 +10,7 @@ public class CharacterMovement : MonoBehaviour
     public Animator anim;
     public SpriteRenderer rend;
     public ParticleSystem dustTrail;
-
-    bool moving;
+     bool moving;
 
     bool canMove = true;
 
@@ -19,25 +18,22 @@ public class CharacterMovement : MonoBehaviour
     {
         if (canMove)
         {
-            float horizontalDirection = Input.GetAxisRaw("Horizontal") * speed;
-            float verticalDirection = Input.GetAxisRaw("Vertical") * speed;
+            float horizontalDirection = Input.GetAxisRaw("Horizontal");
+            float verticalDirection = Input.GetAxisRaw("Vertical");
 
             if (new Vector2(horizontalDirection, verticalDirection).Equals(new Vector2(0, 0))) moving = false;
             else moving = true;
 
-            if (dustTrail != null)
-            {
-                if (moving && !dustTrail.isPlaying) {
-                    dustTrail.Play();
-                }
-                if (!moving) dustTrail.Stop();
-            }
+
+            if (moving && dustTrail != null && !dustTrail.isPlaying) dustTrail.Play();
+            
+            if (!moving && dustTrail != null) dustTrail.Stop();
 
             if (anim != null) anim.SetBool("moving", moving);
             if (horizontalDirection != 0)
                 transform.localScale = new Vector3(horizontalDirection / Mathf.Abs(horizontalDirection), transform.localScale.y, transform.localScale.z);
 
-            rb.velocity = new Vector2(horizontalDirection, verticalDirection);
+            rb.velocity = new Vector2(horizontalDirection, verticalDirection).normalized * speed;
         }
     }
 

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ImpactIndicator : MonoBehaviour
 {
-    public float scaleSpeed = 0.5f;
     public float maxScale = 1.7f;
     [HideInInspector] public Vector3 initialMeteorPosition;
     [HideInInspector] public float remainingDistance;

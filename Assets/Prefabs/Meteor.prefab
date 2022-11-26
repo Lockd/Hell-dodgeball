@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 5419101644902331149}
   - component: {fileID: 5419101644902331151}
   - component: {fileID: 184812824830996704}
-  - component: {fileID: 2768785387279629603}
   m_Layer: 0
   m_Name: Meteor
   m_TagString: Untagged
@@ -99,8 +98,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72ed1902f2aa3154e8396c7c21c279f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _collider: {fileID: 2768785387279629603}
   rb: {fileID: 184812824830996704}
+  minMeteorSpeed: 15
+  maxMeteorSpeed: 22
   destinationPosition: {x: 0, y: 0}
   impactIndicator: {fileID: 0}
   time: 0.025
@@ -125,19 +125,3 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!70 &2768785387279629603
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5419101644902331144}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.34}
-  m_Size: {x: 0.69, y: 0.2}
-  m_Direction: 1

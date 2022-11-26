@@ -12,6 +12,7 @@ public class MeteorSpawner : MonoBehaviour
     public float deltaTime = .1f;
     public float minTimeInterval = .3f;
     public float impactRadius = 1.5f;
+    public int amountOfMeterosToSpawn = 3;
     float xMax;
     float xMin;
     float yMax;
@@ -20,8 +21,8 @@ public class MeteorSpawner : MonoBehaviour
 
     void Start()
     {
-        xMax = bottomRightPosition.transform.position.x - impactRadius*1.7f;
-        xMin = topLeftPosition.transform.position.x + impactRadius*1.7f;
+        xMax = bottomRightPosition.transform.position.x - impactRadius * 1.7f;
+        xMin = topLeftPosition.transform.position.x + impactRadius * 1.7f;
         yMax = topLeftPosition.transform.position.y - impactRadius;
         yMin = bottomRightPosition.transform.position.y + impactRadius;
     }
@@ -30,7 +31,10 @@ public class MeteorSpawner : MonoBehaviour
     {
         if (Time.time > lastMeteorSpawned + timeInterval)
         {
-            spawnMeteor();
+            for (int i = 0; i < amountOfMeterosToSpawn; i++)
+            {
+                spawnMeteor();
+            }
         }
     }
 
@@ -41,21 +45,22 @@ public class MeteorSpawner : MonoBehaviour
         Vector3 initialMeteorPosition = getInitialMeteorPosition(destinationPosition);
         GameObject meteor = Instantiate(meteorPrefab, initialMeteorPosition, Quaternion.identity);
         MeteorBehaviour meteorBehaviour = meteor.GetComponent<MeteorBehaviour>();
-        meteorBehaviour.destinationPosition = new Vector2 (destinationPosition.x, destinationPosition.y);
+        meteorBehaviour.destinationPosition = new Vector2(destinationPosition.x, destinationPosition.y);
         // Spawn impact indicator
         GameObject impactIndicatorGameObject = Instantiate(impactIndicatorPrefab, destinationPosition, Quaternion.identity);
         ImpactIndicator impactIndicator = impactIndicatorGameObject.GetComponent<ImpactIndicator>();
         impactIndicator.initialMeteorPosition = initialMeteorPosition;
-
         meteorBehaviour.impactIndicator = impactIndicator;
         // Change meteor spawning timer
         updateSpawningTime();
     }
 
-    void updateSpawningTime() {
+    void updateSpawningTime()
+    {
         lastMeteorSpawned = Time.time;
         timeInterval -= deltaTime;
-        if (timeInterval < minTimeInterval) {
+        if (timeInterval < minTimeInterval)
+        {
             timeInterval = minTimeInterval;
         }
     }
@@ -71,6 +76,7 @@ public class MeteorSpawner : MonoBehaviour
     {
         float x = Random.Range(xMin, xMax);
         float y = Random.Range(yMin, yMax);
-        return new Vector3(x, y, 0f);
+        Vector3 meteorDestionation = new Vector3(x, y, 0f);
+        return meteorDestionation;
     }
 }

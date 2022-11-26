@@ -194,6 +194,7 @@ MonoBehaviour:
   anim: {fileID: 6440319832243585525}
   rend: {fileID: 6440319832243585522}
   dustTrail: {fileID: 7970930806570836082}
+  runningSound: {fileID: 0}
 --- !u!50 &6440319832243585520
 Rigidbody2D:
   serializedVersion: 4
