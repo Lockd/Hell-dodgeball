@@ -43,7 +43,13 @@ public class MeteorSpawner : MonoBehaviour
         // Spawn meteor itself
         Vector3 destinationPosition = getDestinationPosition();
         Vector3 initialMeteorPosition = getInitialMeteorPosition(destinationPosition);
-        GameObject meteor = Instantiate(meteorPrefab, initialMeteorPosition, Quaternion.identity);
+        
+        Vector3 rotateTowards = new Vector3(0f, 0f, 0f);
+        rotateTowards.x = destinationPosition.x - initialMeteorPosition.x;
+        rotateTowards.y = destinationPosition.y - initialMeteorPosition.y;
+        float angle = Mathf.Atan2(rotateTowards.y, rotateTowards.x) * Mathf.Rad2Deg;
+        
+        GameObject meteor = Instantiate(meteorPrefab, initialMeteorPosition, Quaternion.Euler(new Vector3(0, 0, angle)));
         MeteorBehaviour meteorBehaviour = meteor.GetComponent<MeteorBehaviour>();
         meteorBehaviour.destinationPosition = new Vector2(destinationPosition.x, destinationPosition.y);
         // Spawn impact indicator
