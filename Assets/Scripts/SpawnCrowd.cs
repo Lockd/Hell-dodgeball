@@ -11,15 +11,9 @@ public class SpawnCrowd : MonoBehaviour
     {
         foreach(Transform t in positionsList)
         {
-            GameObject npc = Instantiate(npcList[Random.Range(0, 8)], t.position, t.rotation);
+            GameObject npc = Instantiate(npcList[Random.Range(0, 7)], t.position, t.rotation);
             npc.GetComponent<SpriteRenderer>().sortingOrder = t.GetComponent<SeatLayerAssign>().layerOrder;
             npc.transform.localScale = new Vector3(t.GetComponent<SeatLayerAssign>().scale, 1f, 1f);
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

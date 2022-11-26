@@ -35,6 +35,6 @@ public class ImpactIndicator : MonoBehaviour
         _collider.enabled = true;
         impactParticleSystem.Play();
         sprite.enabled = false;
-        Destroy(gameObject, impactParticleSystem.main.duration);
+        Destroy(gameObject, impactParticleSystem.main.duration - 0.1f);
     }
 }
