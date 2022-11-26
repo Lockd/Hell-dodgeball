@@ -9,6 +9,7 @@ public class CharacterMovement : MonoBehaviour
     public Rigidbody2D rb;
     public Animator anim;
     public SpriteRenderer rend;
+    public ParticleSystem dustTrail;
 
     bool moving;
 
@@ -24,7 +25,15 @@ public class CharacterMovement : MonoBehaviour
             if (new Vector2(horizontalDirection, verticalDirection).Equals(new Vector2(0, 0))) moving = false;
             else moving = true;
 
-            anim.SetBool("moving", moving);
+            if (dustTrail != null)
+            {
+                if (moving && !dustTrail.isPlaying) {
+                    dustTrail.Play();
+                }
+                if (!moving) dustTrail.Stop();
+            }
+
+            if (anim != null) anim.SetBool("moving", moving);
             if (horizontalDirection != 0)
                 transform.localScale = new Vector3(horizontalDirection / Mathf.Abs(horizontalDirection), transform.localScale.y, transform.localScale.z);
 
@@ -39,5 +48,5 @@ public class CharacterMovement : MonoBehaviour
             canMove = value;
         }
     }
-    
+
 }

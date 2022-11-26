@@ -20,7 +20,7 @@ public class CharacterInitializator : MonoBehaviour
         yMin = bottomRightPosition.transform.position.y + 2f;
         for (int i = 0; i<5; i++)
         {
-            GameObject dino = Instantiate(dinosaurs[Random.Range(0, 3)], getDestinationPosition(), transform.rotation);
+            GameObject dino = Instantiate(dinosaurs[Random.Range(0, 4)], getDestinationPosition(), transform.rotation);
             float randomSpeed = Random.Range(4.0f, 8.0f);
             dino.GetComponent<CharacterMovement>().speed = randomSpeed;
             ManagerGame.Alive++;
