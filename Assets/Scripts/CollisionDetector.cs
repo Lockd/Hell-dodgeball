@@ -14,6 +14,7 @@ public class CollisionDetector : MonoBehaviour
     bool shouldDie;
     [HideInInspector] public float enableColliderAfter;
     [HideInInspector] public bool isVulnerable = true;
+    [SerializeField] private AudioSource collectingSound;
     
     void Start()
     {
@@ -38,6 +39,7 @@ public class CollisionDetector : MonoBehaviour
 
         if (col.tag == "Collectable")
         {
+            collectingSound.Play();
             onResurectDino(col);
         }
     }
