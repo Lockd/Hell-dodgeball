@@ -169,7 +169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9090f646100b90e4dbb8f41fffc3dc9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  death: {fileID: -893819609610471936}
+  deathAudio: {fileID: -893819609610471936}
   anim: {fileID: 3308831850387829622}
   deathAnimName: red_death
   character: {fileID: 3308831850387829620}

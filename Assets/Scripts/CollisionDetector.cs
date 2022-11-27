@@ -6,7 +6,7 @@ public class CollisionDetector : MonoBehaviour
 {
     readonly float deathTimer = 0.4f;
 
-    public AudioSource death;
+    public AudioSource deathAudio;
 
     public Animator anim;
     public string deathAnimName;
@@ -18,19 +18,17 @@ public class CollisionDetector : MonoBehaviour
     void OnTriggerEnter2D(Collider2D col) {
         if (col.tag == "Meteor" && !shouldDie) {
             shouldDie = true;
-            Death();
+            onDeath();
         }
     }
 
-    void Death()
+    void onDeath()
     {
-        death.Play();
+        deathAudio.Play();
         ManagerGame.Alive--;
         rb.velocity = new Vector3 (0,0,0);
         character.CanMove = false;
         anim.Play(deathAnimName);
         Destroy(gameObject, deathTimer);
-        
-        
     }
 }

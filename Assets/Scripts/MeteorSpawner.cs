@@ -4,20 +4,22 @@ using UnityEngine;
 
 public class MeteorSpawner : MonoBehaviour
 {
-    public GameObject meteorPrefab;
-    public GameObject impactIndicatorPrefab;
-    public GameObject topLeftPosition;
-    public GameObject bottomRightPosition;
-    public float timeInterval = 1.5f;
-    public float deltaTime = .1f;
-    public float minTimeInterval = .3f;
-    public float impactRadius = 1.5f;
-    public int amountOfMeterosToSpawn = 3;
+    [SerializeField] private GameObject meteorPrefab;
+    [SerializeField] private GameObject impactIndicatorPrefab;
+    [SerializeField] private GameObject topLeftPosition;
+    [SerializeField] private GameObject bottomRightPosition;
+    [SerializeField] private float timeInterval = 1.5f;
+    [SerializeField] private float deltaTime = .1f;
+    [SerializeField] private float minTimeInterval = .3f;
+    [SerializeField] private float impactRadius = 1.5f;
+    [SerializeField] private int amountOfMeterosToSpawn = 3;
     float xMax;
     float xMin;
     float yMax;
     float yMin;
     float lastMeteorSpawned = 0f;
+    [SerializeField] private float increaseMeteorAmountAfter = 60f;
+    float increasedMeteorTime = 0f;
 
     void Start()
     {
@@ -25,6 +27,8 @@ public class MeteorSpawner : MonoBehaviour
         xMin = topLeftPosition.transform.position.x + impactRadius * 1.7f;
         yMax = topLeftPosition.transform.position.y - impactRadius;
         yMin = bottomRightPosition.transform.position.y + impactRadius;
+        
+        increasedMeteorTime = Time.time;
     }
 
     void Update()
@@ -35,6 +39,11 @@ public class MeteorSpawner : MonoBehaviour
             {
                 spawnMeteor();
             }
+        }
+
+        if (Time.time > increasedMeteorTime + increaseMeteorAmountAfter) {
+            increasedMeteorTime = Time.time + increaseMeteorAmountAfter;
+            amountOfMeterosToSpawn++;
         }
     }
 

@@ -194,7 +194,6 @@ MonoBehaviour:
   anim: {fileID: 6440319832243585525}
   rend: {fileID: 6440319832243585522}
   dustTrail: {fileID: 7970930806570836082}
-  runningSound: {fileID: 0}
 --- !u!50 &6440319832243585520
 Rigidbody2D:
   serializedVersion: 4
@@ -254,7 +253,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9090f646100b90e4dbb8f41fffc3dc9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  death: {fileID: -8173233178807925801}
+  deathAudio: {fileID: -8173233178807925801}
   anim: {fileID: 6440319832243585525}
   deathAnimName: yellow_death
   character: {fileID: 6440319832243585523}
