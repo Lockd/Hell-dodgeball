@@ -27,7 +27,6 @@ public class ScoreCounter : MonoBehaviour
     }
 
     public static void saveScore() {
-        //int
         savedHighScore = PlayerPrefs.GetInt("HighScore");
         Debug.Log("saved high score: " + savedHighScore);
         if (currentScore > savedHighScore) {

@@ -11,9 +11,7 @@ public class ManagerGame : MonoBehaviour
     public GameObject overScreen;
     public Button restartButton;
     public Button menuButton;
-
     public GameObject score;
-
     public AudioSource gameOverSound;
 
     private void Start()
@@ -38,6 +36,7 @@ public class ManagerGame : MonoBehaviour
         score.SetActive(false);
         overScreen.SetActive(true);
         ScoreCounter.saveScore();
+        FindObjectOfType<HighScoreText>().gameObject.SetActive(true);
     }
 
     void ReturnToMenu()
