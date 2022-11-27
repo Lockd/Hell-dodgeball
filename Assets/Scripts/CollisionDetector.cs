@@ -45,7 +45,7 @@ public class CollisionDetector : MonoBehaviour
     void onDeath()
     {
         deathAudio.Play();
-        ManagerGame.Alive--;
+        ManagerGame.reduceAmountOfAliveDinos();
         rb.velocity = new Vector3(0, 0, 0);
         character.CanMove = false;
         anim.Play(deathAnimName);

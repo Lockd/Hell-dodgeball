@@ -11,7 +11,7 @@ public class CharacterInitializator : MonoBehaviour
     float yMax;
     float yMin;
     public List<GameObject> dinosaurs;
-
+    
     void Start()
     {
         xMax = bottomRightPosition.transform.position.x - 2f;
@@ -30,7 +30,7 @@ public class CharacterInitializator : MonoBehaviour
         GameObject dino = Instantiate(dinosaurs[Random.Range(0, 4)], getDestinationPosition(), transform.rotation);
         float randomSpeed = Random.Range(4.0f, 8.0f);
         dino.GetComponent<CharacterMovement>().speed = randomSpeed;
-        ManagerGame.Alive++;
+        ManagerGame.increaseAmountOfAliveDinos();
 
         if (isResurection) {
             CollisionDetector collisionDetector = dino.GetComponent<CollisionDetector>();

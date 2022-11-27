@@ -13,11 +13,14 @@ public class ManagerGame : MonoBehaviour
     public Button menuButton;
     public GameObject score;
     public AudioSource gameOverSound;
+    HealthCounterBehaviour healthCounter;
 
     private void Start()
     {
         restartButton.onClick.AddListener(Restart);
         menuButton.onClick.AddListener(ReturnToMenu);
+
+        healthCounter = FindObjectOfType<HealthCounterBehaviour>();
     }
 
     private void Update()
@@ -47,6 +50,14 @@ public class ManagerGame : MonoBehaviour
     void Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public static void reduceAmountOfAliveDinos() {
+        Alive--;
+    }
+
+    public static void increaseAmountOfAliveDinos() {
+        Alive++;
     }
 
     public static int Alive
