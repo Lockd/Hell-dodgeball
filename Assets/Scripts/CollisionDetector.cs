@@ -5,20 +5,40 @@ using UnityEngine;
 public class CollisionDetector : MonoBehaviour
 {
     readonly float deathTimer = 0.4f;
-
     public AudioSource deathAudio;
-
     public Animator anim;
     public string deathAnimName;
-
     public CharacterMovement character;
     public Rigidbody2D rb;
-
+    CharacterInitializator characterInitializator;
     bool shouldDie;
-    void OnTriggerEnter2D(Collider2D col) {
-        if (col.tag == "Meteor" && !shouldDie) {
+    [HideInInspector] public float enableColliderAfter;
+    [HideInInspector] public bool isVulnerable = true;
+    
+    void Start()
+    {
+        characterInitializator = FindObjectOfType<CharacterInitializator>();
+    }
+
+    void Update()
+    {
+        if (!isVulnerable && Time.time > enableColliderAfter)
+        {
+            isVulnerable = true;
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.tag == "Meteor" && !shouldDie && isVulnerable)
+        {
             shouldDie = true;
             onDeath();
+        }
+
+        if (col.tag == "Collectable")
+        {
+            onResurectDino(col);
         }
     }
 
@@ -26,9 +46,15 @@ public class CollisionDetector : MonoBehaviour
     {
         deathAudio.Play();
         ManagerGame.Alive--;
-        rb.velocity = new Vector3 (0,0,0);
+        rb.velocity = new Vector3(0, 0, 0);
         character.CanMove = false;
         anim.Play(deathAnimName);
         Destroy(gameObject, deathTimer);
+    }
+
+    void onResurectDino(Collider2D col)
+    {
+        Destroy(col.gameObject);
+        characterInitializator.spawnDino(true);
     }
 }
