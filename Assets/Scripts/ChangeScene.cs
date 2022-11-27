@@ -8,7 +8,6 @@ public class ChangeScene : MonoBehaviour
 {
     public string sceneName;
     public Button button;
-    // Start is called before the first frame update
     void Start()
     {
         button.onClick.AddListener(NewScene);
