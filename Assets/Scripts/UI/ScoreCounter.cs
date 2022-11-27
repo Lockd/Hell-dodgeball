@@ -13,7 +13,6 @@ public class ScoreCounter : MonoBehaviour
     {
         scoreText = GetComponent<Text>();
         resetScore();
-        Debug.Log("Highest score yet: " + PlayerPrefs.GetInt("HighScore"));
     }
 
     private void Update()
@@ -28,7 +27,6 @@ public class ScoreCounter : MonoBehaviour
 
     public static void saveScore() {
         savedHighScore = PlayerPrefs.GetInt("HighScore");
-        Debug.Log("saved high score: " + savedHighScore);
         if (currentScore > savedHighScore) {
             PlayerPrefs.SetInt("HighScore", currentScore);
         }

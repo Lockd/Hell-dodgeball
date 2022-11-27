@@ -36,7 +36,6 @@ public class HealthCounterBehaviour : MonoBehaviour
 
     void addHeart()
     {
-        Debug.Log("add heart is called");
         GameObject heart = Instantiate(heartGameObject, new Vector3(), Quaternion.identity);
         heart.transform.SetParent(gameObject.transform);
         heart.transform.localScale = new Vector3(20f, 20f, 1f);
@@ -44,7 +43,6 @@ public class HealthCounterBehaviour : MonoBehaviour
 
     void removeHeart()
     {
-        Debug.Log("remove heart is called");
         if (transform.childCount > 0)
         {
             Destroy(transform.GetChild(0).gameObject);
